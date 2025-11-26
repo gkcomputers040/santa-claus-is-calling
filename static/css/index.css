@@ -1,0 +1,395 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+body, html {
+  font-family: 'Dancing Script', cursive;
+  height: 100%;
+  margin: 0;
+  background-color: #003366; 
+}
+.container {
+  display: flex;
+  height: 100%;
+}
+.left-section {
+  flex: 0 1 30%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.right-section {
+  flex: 0 1 70%;
+  display: flex;
+  flex-direction: column;
+  background-image: url("/static/img/santa_claus_happy.webp");
+  background-color: white;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.header {
+  color: white;
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  line-height: 1.2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+form {
+  width: 80%;
+  margin: 0 auto;
+}
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-sizing: border-box;
+}
+.santa-container {
+  flex: 0 0 40%;
+  display: flex;
+  height: 50%;
+  padding-top: 50px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 1%;
+  padding-right: 20px;
+}
+
+#chibi-top {
+position: relative;
+width: 100%;
+display: flex;
+justify-content: space-between;
+}
+#chibi-bottom {
+position: relative;
+width: 100%;
+display: flex;
+justify-content: space-between;
+}
+
+.sticker {
+width: 100px;
+height: auto;
+}
+
+.sticker-left {
+margin-left: 10px;
+}
+
+.sticker-right {
+margin-right: 10px;
+}
+
+.form-container {
+flex: 1;
+overflow-y: auto;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100%;
+}
+
+.navbar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+overflow: hidden;
+background-color: #333;
+position: fixed;
+width: 100%;
+top: 0;
+}
+
+.navbar a, .navbar .language-select {
+float: none;
+display: block;
+color: #f2f2f2;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+font-size: 17px;
+}
+
+.navbar a:hover, .navbar .language-select:hover {
+background: #ddd;
+color: black;
+}
+
+.language-select select {
+    background: transparent;
+    border: none;
+    color: #f2f2f2;
+    font-size: 16px;
+}
+
+.language-select select:focus {
+    outline: none;
+}
+
+.language-select select:focus {
+    color: #000000;
+}
+.logout-button {
+background-color: #dcb019;
+color: white;
+border: none;
+padding: 10px 20px;
+cursor: pointer;
+width: 120px;
+height: 30px;
+}
+
+.logout-button:hover {
+background-color: darkred;
+}
+
+
+.highlight {
+animation: highlightAnimation 2s ease-in-out;
+}
+@keyframes highlightAnimation {
+0% { border-color: #ccc; }
+50% { border-color: #ff9800; }
+100% { border-color: #ccc; }
+}
+.entrada, .salida {
+transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.entrada {
+opacity: 1;
+transform: translateX(0);
+}
+
+.salida {
+opacity: 0;
+transform: translateX(-20px);
+}
+
+/* Form styles */
+#formulario1 {
+    width: 70%;
+    height: 25%;
+    padding: 20px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: box-shadow 0.3s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#formulario1:hover {
+box-shadow: 0 0 35px rgba(0, 0, 0, 0.5);
+}
+
+/* Form field styles */
+.campo-formulario {
+flex-direction: column;
+align-items: flex-start;
+width: 80%;
+}
+
+/* Form input and textarea styles */
+.input-formulario, .textarea-formulario {
+padding: 12px;
+margin-bottom: 15px;
+border: 2px solid;
+border-color: #ff4d4d;
+border-radius: 7px;
+font-size: 18px;
+transition: border-color 0.3s ease; /* Smooth border color transition */
+}
+
+.input-formulario:focus, .textarea-formulario:focus {
+border-color: #007bff; /* Change border color on focus */
+}
+
+/* Form select styles */
+.select-formulario {
+width: 100%;
+padding: 12px;
+margin-right: 15px;
+border: 2px solid;
+border-color: #ff4d4d;
+border-radius: 7px;
+font-size: 18px;
+transition: border-color 0.3s ease; /* Smooth border color transition */
+}
+
+.select-formulario:focus {
+border-color: #007bff; /* Change border color on focus */
+}
+
+/* Form button styles */
+.boton-siguiente, .boton-enviar, .boton-anterior {
+padding: 12px 25px;
+border: none;
+border-radius: 7px;
+background-color: #b30000;
+color: white;
+font-size: 18px;
+cursor: pointer;
+transition: background-color 0.3s ease, transform 0.3s ease; 
+margin: 5px 0; 
+width: 125px; 
+height: 40px; 
+}
+.boton-siguiente, .boton-enviar{
+margin-left: 20px;
+}
+.boton-anterior{
+margin-right: 20px;
+}
+
+.boton-siguiente:hover, .boton-enviar:hover, .boton-anterior:hover {
+background-color: #ff4d4d;
+transform: scale(1.05); /* Increase button size on hover */
+}
+
+.input-container {
+flex-grow: 1;
+display: flex;
+justify-content: center; /* Center content */
+align-items: center;
+}
+.input-button-container {
+display: flex;
+justify-content: space-between;
+align-items: center; /* Align elements vertically */
+width: 100%;
+}
+.mensaje-error {
+display: none; /* Hidden initially */
+padding: 5px;
+background-color: #ffdddd;
+border: 1px solid #ff4d4d;
+color: #d8000c;
+font-size: 14px;
+border-radius: 5px;
+white-space: nowrap; /* Prevent text from breaking into lines */
+align-self: center;
+}
+#verificar_enviar{
+background-color: #b30000;
+color: white;
+padding: 12px 20px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+font-size: 16px;
+}
+#user_mail{
+color: white;
+font-size: xx-large;
+}
+
+@media (max-width: 768px) {
+ .left-section, .santa-container {
+    display: none;
+}
+.input-formulario{
+    width: 100%;
+}
+.right-section {
+    flex: 1;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.campo-formulario{
+    width: 100%;
+}
+.input-button-container{
+    display: block;
+    text-align: center;
+}
+#formulario1{
+    width: 100%;
+    height: 200px;
+}
+.mensaje-error{
+    margin-top: 5%;
+}
+
+.navbar a, .navbar .language-select {
+  padding: 10px 8px;
+  font-size: 14px; 
+}
+
+.navbar img {
+  height: 40px; 
+  width: 40px;
+}
+ #user_mail {
+  display: none;
+ }
+ .logout-button{
+  height: 40px;
+ }
+}
+
+.olvido-usuario, .olvido-usuario:visited {
+color: red;
+font-weight: bold;
+}
+
+.olvido-usuario:hover {
+color: yellow;
+ font-weight: bold;
+}
+.contenedor-centrado {
+display: flex;
+justify-content: center;
+align-items: center;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: calc(100% - 120px);
+z-index: 10;
+margin-top: 70px;
+}
+
+.carta-santa {
+background-color: rgba(255, 255, 255, 0.5);
+border: 2px solid #ff0000;
+padding: 20px;
+border-radius: 10px;
+font-family: 'Times New Roman', Times, serif;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+width: 90%;
+max-width: 700px;
+z-index: 5;
+color: black;
+}
+#popup {
+position: fixed;
+top: 75px;
+left: 50%;
+transform: translateX(-50%);
+background: #4CAF50;
+padding: 20px;
+border-radius: 5px;
+z-index: 1000;
+}
+
+.hidden {
+display: none;
+}

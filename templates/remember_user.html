@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title_remember_user }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+
+	
+<style>
+    body {
+		background-image: url('/static/img/forgot_user.jpg');
+		background-size: cover;
+     }
+    h1{
+         padding: 0;
+     }
+</style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div id="popup" class="{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}	
+    <script src="/static/js/popup.js"></script>
+    <div class="container-box container">
+        <h1>{{ header_remember_user }}</h1>
+        <form method="POST">
+            <label for="mail">{{ label_mail }}</label><br>
+            <input type="text" id="mail" name="mail" required><br>
+            <input id=send-sms-button type="submit" value="{{ remember_user_button }}">
+        </form>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

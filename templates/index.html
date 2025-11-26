@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ title_talk_to_santa }}</title>
+        <link rel="stylesheet" href="/static/css/styles_modal.css">
+        <link rel="stylesheet" href="/static/css/index.css">
+    </head>
+    <style>
+    </style>
+<body>
+    {% include 'navbar.html' %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div id="popup" class="{{ category }}">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}	
+    <script src="/static/js/popup.js"></script>
+    
+    {% if session.user_authenticated %}
+    <div class="contenedor-centrado">
+        <div class="carta-santa">
+            {% if user_details[1] is none or user_details[1] == '' or user_details[2] is none or user_details[2] == '' or user_details[4] is none or user_details[4] == '' %}
+            <p>{{ Info_sin_llamada1 }}<a href="/user">{{ Info_sin_llamada2 }}</a>{{ Info_sin_llamada3 }}</p>
+            {% else %}
+            <p>{{ info_index1 }}<strong>{{ user_details[0] }}</strong>{{ info_index2 }}<strong>{{ user_details[1] }}</strong>{{ info_index3 }}<strong>{{ user_details[2] }}</strong>{{ info_index4 }}<strong>{{ user_details[3] }}</strong>{{ info_index5 }}</p>
+            <p>{{ info_index6 }}<a href="/user">{{ here }}</a></p>
+            {% endif %}
+            <div id="chibi-bottom">
+                <img src="{{ url_for('static', filename='img/santa_chibi2.webp') }}" alt="Santa Claus chibi" class="sticker sticker-left" loading="lazy">
+                <img src="{{ url_for('static', filename='img/Arbol_chibi2.webp') }}" alt="Árbol de Navidad chibi" class="sticker sticker-right" loading="lazy">
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="container">
+        <div class="left-section">
+            <div class="header">
+                <div>{{ speak_text }}</div>
+                <span>{{ speak_with }}</span>
+                <span>{{ santa_label }}</span>
+            </div>
+            <div class="container-body">
+                <form action="/user" method="post">
+                    <label for="mail">{{ label_mail }}</label>
+                    <input type="text" id="mail" name="mail" required>
+                    <br>
+                    <label for="password">{{ label_password }}</label>
+                    <input type="password" id="password" name="password" required>
+                    <br>
+                    <input id="verificar_enviar" type="submit" value="{{ login }}">
+                </form>
+                <a href="/remember-user" class="olvido-usuario">{{ forgot_password }}</a>
+            </div>
+        </div>
+        
+        <div class="right-section">
+            <div class="santa-container"></div> <!-- Container for Santa image -->
+            
+            <div class="form-container">
+                <form id="formulario1" action="/start-verification" method="post">
+                    <div class="campo-formulario" id="campo1">
+                        <div class="input-button-container">
+                            <div class="input-container">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="child_name" name="child_name" required placeholder="{{ child_name_placeholder }}" class="input-formulario">
+                                    <!-- Help Button -->
+                                    <button type="button" class="boton-ayuda" onclick="toggleModal()">?</button>
+                                </div>
+                            </div>
+                            <button type="button" class="boton-siguiente" onclick="showNextField(1, 'formulario1')">{{ btn_next }}</button>
+                        </div>
+                        <span class="mensaje-error" id="error-child_name"></span>
+                    </div>
+                    <div id="contenedorDelFormulario"></div>
+                </form>
+                <!-- Help Modal -->
+                <div id="modalAyuda" class="modal-oculto">
+                    <div class="modal-contenido">
+                        <span class="cerrar-modal" onclick="toggleModal()">&times;</span>
+                        <p class="texto-ayuda">{{ modal_help_text1|safe }}</p>
+                    </div>
+                </div>
+                
+            </div>
+            <div id="chibi-bottom">
+                <img src="{{ url_for('static', filename='img/santa_chibi2.webp') }}" alt="{{ alt_sticker_1 }}" class="sticker sticker-left" loading="lazy">
+                <img src="{{ url_for('static', filename='img/Arbol_chibi2.webp') }}" alt="{{ sticker_alt_text_2 }}" class="sticker sticker-right" loading="lazy">
+            </div>
+            
+        </div>
+    </div>
+    <script src="/static/js/showFields.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/static/js/validator.js"></script>
+    <script src="/static/js/trimInputs.js"></script>
+    <script src="/static/js/mail_check.js"></script>
+    <script>
+        var errorMessages = {
+            invalid_name_error: "{{ strings_data['invalid_name_error'] }}",
+            invalid_phone_message: "{{ strings_data['invalid_phone_message'] }}",
+            invalid_date_error: "{{ strings_data['invalid_date_error'] }}",
+            error_message_empty_field: "{{ strings_data['error_message_empty_field'] }}",
+            error_message_invalid_dropdown: "{{ strings_data['error_message_invalid_dropdown'] }}",
+            invalid_password_error: "{{ strings_data['invalid_password_error'] }}",
+            password_mismatch_error: "{{ strings_data['password_mismatch_error'] }}",
+            error_message_invalid_email: "{{ strings_data['error_message_invalid_email'] }}",
+            error_mail_registered: "{{ strings_data['email_registered'] }}"
+        };
+        </script>
+     {%endif%}
+    </div>
+</div>
+</body>
+<script src="/static/js/snow.js"></script>
+</html>
+
+

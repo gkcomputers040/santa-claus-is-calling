@@ -1,0 +1,46 @@
+# Core Web Frameworks
+Flask>=3.0.0
+fastapi>=0.100.0
+uvicorn>=0.23.0
+starlette>=0.27.0
+
+# Async & HTTP
+aiohttp>=3.9.0
+aiofiles>=23.0.0
+websockets>=12.0
+requests>=2.31.0
+
+# AI/ML APIs
+openai>=1.0.0
+deepgram-sdk>=3.0.0,<4.0.0
+
+# Twilio (Voice & SMS)
+twilio>=9.0.0
+
+# Data Processing
+numpy>=1.24.0
+scipy>=1.11.0
+orjson>=3.9.0
+
+# Audio Processing
+pydub>=0.25.1
+
+# Task Scheduling
+APScheduler>=3.10.0
+
+# Database & Security
+bcrypt>=4.0.0
+python-dotenv>=1.0.0
+itsdangerous>=2.1.0
+MarkupSafe>=2.1.0
+
+# Data Validation
+pydantic>=2.0.0
+
+# Date & Time
+pytz>=2024.1
+python-dateutil>=2.8.0
+
+# Utilities
+emoji>=2.0.0
+psutil>=5.9.0

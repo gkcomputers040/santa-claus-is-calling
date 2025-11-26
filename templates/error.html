@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es" >
+<head>
+    <meta charset="UTF-8">
+    <title>{{error404}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/css/error.css">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="contenedor-error">
+        <h1>{{ error_code }}</h1>
+        <h2>{{ error_message }}</h2>
+        <p>{{ something_go_wrong }}</p>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

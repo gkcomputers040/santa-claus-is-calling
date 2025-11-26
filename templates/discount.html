@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ generate_discount_code }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <h1>{{ generate_discount_code }}</h1>
+    <form action="/process-discount" method="POST">
+        <label for="nombre_codigo">{{ code_name }}</label><br>
+        <input type="text" id="nombre_codigo" name="nombre_codigo" required><br>
+        
+        <label for="descuento">{{ discount }}</label><br>
+        <input type="number" id="descuento" name="descuento" min="1" max="100" required><br>
+        
+        <label for="fecha_validez">{{ validity_date }}</label><br>
+        <input type="date" id="fecha_validez" name="fecha_validez"><br>
+        <input type="checkbox" id="validez_ilimitada" name="validez_ilimitada" onchange="toggleCheckbox('validez_ilimitada', 'fecha_validez')">
+        <label for="validez_ilimitada">{{ unlimited_validity }}</label><br>
+        
+        <label for="cantidad_usos">{{ usage_quantity }}</label><br>
+        <input type="number" id="cantidad_usos" name="cantidad_usos" min="1"><br>
+        <input type="checkbox" id="usos_ilimitados" name="usos_ilimitados" onchange="toggleCheckbox('usos_ilimitados', 'cantidad_usos')">
+        <label for="usos_ilimitados">{{ unlimited_usage }}</label><br>
+        
+        <input type="submit" value="Generar Código">
+    </form>
+    {% include 'footer.html' %}
+</body>
+<script>
+    function toggleCheckbox(checkboxId, inputId) {
+        var input = document.getElementById(inputId);
+        var checkbox = document.getElementById(checkboxId);
+        input.disabled = checkbox.checked;
+        
+        if (checkbox.checked) {
+            input.value = ''; 
+        }
+    }
+</script>
+</html>

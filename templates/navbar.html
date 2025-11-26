@@ -1,0 +1,56 @@
+<div class="navbar">
+    <div style="display: flex; height: 60px;align-items: center;">	
+		<a href="/"><img src="/static/img/papaNoelSinFondo3.webp" alt="Home" style="height: 60px; width: 60px; object-fit: cover;" loading="lazy"></a>
+		{% if session.user_authenticated %}
+		<a href="/user">{{ strings_data['user_log'] }}</a>
+		{% else %}
+		<a href="/user">{{ strings_data['login'] }}</a>
+		{% endif %}
+		<div class="language-select">
+			<form id="language-selector" action="" method="get">
+				<select name="lang" onchange="updateLanguageAndPreserveParams(this)">
+					<option value="en" {% if session['lang'] == 'en' %}selected{% endif %}>English</option>
+					<option value="es" {% if session['lang'] == 'es' %}selected{% endif %}>Español</option>
+					<option value="fr" {% if session['lang'] == 'fr' %}selected{% endif %}>Français</option>
+					<option value="fi" {% if session['lang'] == 'fi' %}selected{% endif %}>Suomi</option>
+					<option value="ja" {% if session['lang'] == 'ja' %}selected{% endif %}>日本語</option>
+					<option value="nl" {% if session['lang'] == 'nl' %}selected{% endif %}>Nederlands</option>
+					<option value="ru" {% if session['lang'] == 'ru' %}selected{% endif %}>Русский</option>
+					<option value="ko" {% if session['lang'] == 'ko' %}selected{% endif %}>한국어</option>
+					<option value="sv" {% if session['lang'] == 'sv' %}selected{% endif %}>Svenska</option>
+					<option value="ro" {% if session['lang'] == 'ro' %}selected{% endif %}>Română</option>
+					<option value="uk" {% if session['lang'] == 'uk' %}selected{% endif %}>Українська</option>
+					<option value="bg" {% if session['lang'] == 'bg' %}selected{% endif %}>Български</option>
+					<option value="tl" {% if session['lang'] == 'tl' %}selected{% endif %}>Filipino</option>
+					<option value="cs" {% if session['lang'] == 'cs' %}selected{% endif %}>Čeština</option>
+					<option value="da" {% if session['lang'] == 'da' %}selected{% endif %}>Dansk</option>
+					<option value="el" {% if session['lang'] == 'el' %}selected{% endif %}>Ελληνικά</option>
+					<option value="sk" {% if session['lang'] == 'sk' %}selected{% endif %}>Slovenčina</option>
+					<option value="hr" {% if session['lang'] == 'hr' %}selected{% endif %}>Hrvatski</option>
+					<option value="pt" {% if session['lang'] == 'pt' %}selected{% endif %}>Português</option>
+					<option value="de" {% if session['lang'] == 'de' %}selected{% endif %}>Deutsch</option>
+					<option value="it" {% if session['lang'] == 'it' %}selected{% endif %}>Italiano</option>
+					<option value="pl" {% if session['lang'] == 'pl' %}selected{% endif %}>Polski</option>
+				</select>
+			</form>
+		</div>
+	</div>		
+	{% if session.user_authenticated %}
+		<div class="user_mail">
+			<span id="user_mail">{{ session.user_mail }}</span>
+		</div>
+        <a href="{{ url_for('logout') }}" class="logout-button">{{ strings_data['logout'] }}</a>
+    {% endif %}
+</div>
+
+<script>
+	function updateLanguageAndPreserveParams(selectElement) {
+		var selectedLanguage = selectElement.value;
+		var currentUrl = new URL(window.location.href);
+		var searchParams = currentUrl.searchParams;
+
+		searchParams.set('lang', selectedLanguage);
+		var newUrl = currentUrl.pathname + '?' + searchParams.toString();
+		window.location.href = newUrl;
+	}
+</script>

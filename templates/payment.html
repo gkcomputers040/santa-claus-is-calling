@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page_title_payment }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/css/payment.css">
+    <script src="https://www.paypal.com/sdk/js?client-id={{ paypal_client_id }}"></script>
+</head>
+<body>
+ 	
+	{% include 'navbar.html' %}
+   
+	<div class="payment">
+		<div class="pay-content">
+            <h1 id="payment">{{ purchase_call_time_title }}</h1>
+		</div>
+		<div id="discount-code">
+			<input type="text" name= "discount-code" id="input-discount-code" placeholder="{{ discount_code_placeholder }}">
+			<button onclick="applyDiscount()">{{ btn_apply_discount }}</button>
+		</div>
+		<div id="paypal-button-container"></div>
+	</div>
+	{% include 'footer.html' %}
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        var info = {
+            purchase_confirmation_message: "{{ strings_data['purchase_confirmation_message'] }}",
+            purchase_confirmation_message2: "{{ strings_data['purchase_confirmation_message2'] }}",
+            scheduled_call_text: "{{ strings_data['scheduled_call_text'] }}",
+            pay_content_append_text: "{{ strings_data['pay_content_append_text'] }}",
+            payment_verification_text: "{{ strings_data['payment_verification_text'] }}",
+            discount_success_alert: "{{ strings_data['discount_success_alert'] }}",
+            discount_code_validated_alert: "{{ strings_data['discount_code_validated_alert'] }}",
+            error_server_response_not_ok: "{{ strings_data['error_server_response_not_ok'] }}",
+            invalid_or_expired_discount_code_alert: "{{ strings_data['invalid_or_expired_discount_code_alert'] }}",
+            alert_discount_error: "{{ strings_data['alert_discount_error'] }}"
+        }
+    </script>
+    <script src="/static/js/payment.js"></script>
+</body>
+</html>

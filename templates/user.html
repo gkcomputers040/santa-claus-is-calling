@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title_modify_data }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="/static/css/edit.css">
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <!-- Display Flash messages passed from the app -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div id="popup" class="{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}	
+	  
+      <div class="container-box container-edit">
+          <h1>{{ header_modify_data }}</h1>
+            <form action="/update-user" method="post">
+                {% for key, value in user.items() %}
+                    {% if key != 'id' and key != 'verification_code' and key != 'usuario_id' %} <!-- Add this line to exclude the "id" field -->
+                        {% if key == 'timer' %}
+                            <!-- Display call_tokens, phone_number and timer as read-only -->
+                            <label for="{{ key }}">{{ timer }}</label>
+                            <input type="text" id="{{ key }}" name="{{ key }}" value="{{ value }}" readonly><br>
+                            <button type="button" id="abrirModal">{{ add_time }}</button>
+                        {% elif key == 'gifts' %}
+                            <!-- Generate textarea for gifts and context -->
+                            <label for="{{ key }}">{{ gift }}</label>
+                            <textarea id="{{ key }}" name="{{ key }}" class="form-control" rows="4">{{ value }}</textarea><br>
+                        {% elif key == 'context' %}
+                        <!-- Generate textarea for gifts and context -->
+                        <label for="{{ key }}">{{ context }}</label>
+                        <textarea id="{{ key }}" name="{{ key }}" class="form-control" rows="4">{{ value }}</textarea><br>
+                        {% elif key == 'call_time' %}
+                            <!-- Generate time input for call_time -->
+                            <label for="{{ key }}">{{ call_time }}</label>
+                            <input type="time" id="{{ key }}" name="{{ key }}" value="{{ value }}" ><br>
+                            <input type="button" id="cancelCallButton" value="{{ cancel_call}}">
+                        {% elif key == 'call_date' %}
+                            <!-- Generate date input for call_date -->
+                            <label for="{{ key }}">{{ call_date }}</label>
+                            <input type="date" id="{{ key }}" name="{{ key }}" value="{{ value }}" ><br>
+                        {% elif key == 'country' %}
+                            <!-- Generate select for country -->
+                            <label for="{{ key }}">{{ country }}</label>
+                            <select id="{{ key }}" name="{{ key }}" required class="select-formulario-user">
+                            </select><br>
+                        {% elif key == 'lang' %}
+                            <!-- Generate select for lang -->
+                            <label for="lang">{{ lang }}</label>
+                            <select id="lang" name="lang" required class="select-formulario-user">
+                                <option value="">{{ select_language_option }}</option>
+                                <option value="es" {% if user.lang == 'es' %}selected{% endif %}>{{ option_spanish }}</option>
+                                <option value="en" {% if user.lang == 'en' %}selected{% endif %}>{{ option_english }}</option>
+                                <option value="fr" {% if user.lang == 'fr' %}selected{% endif %}>{{ option_french }}</option>
+                                <option value="bg" {% if user.lang == 'bg' %}selected{% endif %}>{{ option_bulgarian }}</option>
+                                <option value="cs" {% if user.lang == 'cs' %}selected{% endif %}>{{ option_czech }}</option>
+                                <option value="da" {% if user.lang == 'da' %}selected{% endif %}>{{ option_danish }}</option>
+                                <option value="nl" {% if user.lang == 'nl' %}selected{% endif %}>{{ option_dutch }}</option>
+                                <option value="tl" {% if user.lang == 'tl' %}selected{% endif %}>{{ option_filipino }}</option>
+                                <option value="hr" {% if user.lang == 'hr' %}selected{% endif %}>{{ option_croatian }}</option>
+                                <option value="it" {% if user.lang == 'it' %}selected{% endif %}>{{ option_italian }}</option>
+                                <option value="ja" {% if user.lang == 'ja' %}selected{% endif %}>{{ option_japanese }}</option>
+                                <option value="ko" {% if user.lang == 'ko' %}selected{% endif %}>{{ option_korean }}</option>
+                                <option value="de" {% if user.lang == 'de' %}selected{% endif %}>{{ option_german }}</option>
+                                <option value="pl" {% if user.lang == 'pl' %}selected{% endif %}>{{ option_polish }}</option>
+                                <option value="pt" {% if user.lang == 'pt' %}selected{% endif %}>{{ option_portuguese }}</option>
+                                <option value="ro" {% if user.lang == 'ro' %}selected{% endif %}>{{ option_romanian }}</option>
+                                <option value="ru" {% if user.lang == 'ru' %}selected{% endif %}>{{ option_russian }}</option>
+                                <option value="sk" {% if user.lang == 'sk' %}selected{% endif %}>{{ option_slovak }}</option>
+                                <option value="sv" {% if user.lang == 'sv' %}selected{% endif %}>{{ option_swedish }}</option>
+                                <option value="el" {% if user.lang == 'el' %}selected{% endif %}>{{ option_greek }}</option>
+                                <option value="uk" {% if user.lang == 'uk' %}selected{% endif %}>{{ option_ukrainian }}</option>
+                                <option value="fi" {% if user.lang == 'fi' %}selected{% endif %}>{{ option_finnish }}</option>
+                                <!-- Add more language options as needed -->
+                            </select><br>
+                        {% elif key == 'time_zone' %}
+                            <!-- Generate select for time_zone -->
+                            <label for="time_zone">{{ time_zone }}</label>
+                            <select id="time_zone" name="time_zone" required class="select-formulario-user">
+                                <option value="">{{ select_timezone_option }}</option>
+                                {% for timezone in timezones %}
+                                    <option value="{{ timezone }}" {% if user.time_zone == timezone %}selected{% endif %}>{{ timezone }}</option>
+                                {% endfor %}
+                            </select><br>
+                        {% elif key != 'call_job_id' %}
+                            <!-- Generate input for other fields -->
+                            {% if key == 'child_name' %}
+                            <label for="{{ key }}">{{ child }}</label>
+                            <input type="text" id="{{ key }}" name="{{ key }}" value="{{ value }}" required><br>
+                            {% elif key == 'father_name' %}
+                            <label for="{{ key }}">{{ father_name }}</label>
+                            <input type="text" id="{{ key }}" name="{{ key }}" value="{{ value }}" required><br>
+                            {% elif key == 'mother_name' %}
+                            <label for="{{ key }}">{{ mother_name }}</label>
+                            <input type="text" id="{{ key }}" name="{{ key }}" value="{{ value }}" required><br>
+                            {% elif key == 'phone_number' %}
+                            <label for="{{ key }}">{{ phone_number }}</label>
+                            <input type="text" id="{{ key }}" name="{{ key }}" value="{{ value }}" required><br>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                <input type="submit" id="actualizar" value="{{ btn_update }}">
+                <input type="button" id="delete-profile" value="{{ btn_delete_profile }}" id="delete-profile" class="delete-button">
+            </form>
+            <form action="/change-password" method="post">
+                <input id= "change-password" type="submit" value="{{ change_password }}">
+            </form>
+        <div id="miModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <select id="timer_plus" name="timer_plus" required class="select-formulario-user">
+                    <option value="">{{ select_call_duration }}</option>
+                    <option value="300">{{ option_5_dollars }}</option>
+                    <option value="600">{{ option_8_dollars }}</option>
+                    <option value="1800">{{ option_30_min }}</option>
+                </select>
+                <button onclick="redirectToPaymentPage()">{{ go_pay }}</button>
+            </div>
+        </div>
+        <script src="/static/js/modal.js"></script>
+        <script src="/static/js/delete.js"></script>
+        <script src="/static/js/cancel_call.js"></script>
+        <script src="/static/js/popup.js"></script>
+      </div>
+      {% include 'footer.html' %}
+  </body>
+  
+</html>

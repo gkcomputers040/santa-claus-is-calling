@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ privacy_policy }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <header style="margin-top: 20px;">
+        <h1>{{ privacy_policy_data }}</h1>
+    </header>
+    
+    <div class="container">
+        <h2>{{ privacy_policy }}</h2>
+        <p>
+            {{ privacy_policy_info }}
+        </p>
+        <h3>{{ information_collected }}</h3>
+        <p>
+            {{ information_collected_info}}
+        </p>
+        <h3>{{ consent_control }}</h3>
+        <p>
+            {{consent_control_info}}
+        </p>
+    </div>
+    <!-- Include Footer -->
+    {% include 'footer.html' %}
+</body>
+</html>

@@ -1,0 +1,35 @@
+body {
+    color:white;
+    text-align: center;
+    background: #003366;
+    background-image: url('/static/img/BiSmXaq.webp'), url('/static/img/XHuy0NJ.webp'), url('/static/img/okpRxJU.webp');
+    -webkit-animation: snow 20s linear infinite;
+    -moz-animation: snow 20s linear infinite;
+    -ms-animation: snow 20s linear infinite;
+    animation: snow 20s linear infinite;
+  }
+  
+  @-webkit-keyframes snow {
+  0% { background-position: 0px 0px, 0px 0px, 0px 0px; }
+  50% { background-color: #336699; }
+  100% { background-position: 500px 1000px, 400px 400px, 300px 300px;
+  background-color: #003366; }
+  }
+  @-moz-keyframes snow {
+  0% { background-position: 0px 0px, 0px 0px, 0px 0px; }
+  50% { background-color: #336699; }
+  100% { background-position: 500px 1000px, 400px 400px, 300px 300px;
+  background-color: #003366; }
+  }
+  @-ms-keyframes snow {
+  0% { background-position: 0px 0px, 0px 0px, 0px 0px; }
+  50% { background-color: #336699; }
+  100% { background-position: 500px 1000px, 400px 400px, 300px 300px;
+  background-color: #003366; }
+  }
+  @keyframes snow {
+  0% { background-position: 0px 0px, 0px 0px, 0px 0px; }
+  50% { background-color: #336699; }
+  100% { background-position: 500px 1000px, 400px 400px, 300px 300px;
+  background-color: #003366; }
+  }

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="{{ html_lang }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ edit_data_title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+   <style>
+
+    body {
+    background-image: url('/static/img/user_bg.jpg'); 
+    }
+   </style>	
+</head>
+<body>
+  {% include 'navbar.html' %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div id="popup" class="{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}	
+    <script src="/static/js/popup.js"></script>
+    <div class="form-container">
+      
+      <div class="container-box container">
+        <h1>{{ edit_data_title }}</h1>
+        <form action="/user" method="post">
+          <label for="mail">{{ label_mail }}</label>
+          <input type="text" id="mail" name="mail" required>
+          <br>
+          <label for="password">{{ label_password }}</label>
+          <input type="password" id="password" name="password" required>
+          <br>
+          <a href="/remember-user" class="olvido-usuario">{{ forgot_password }}</a>
+          <input type="submit" value="{{ login }}">
+        </form>
+      </div>
+    </div>
+      {% include 'footer.html' %}
+</body>
+</html>

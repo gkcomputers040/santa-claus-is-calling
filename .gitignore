@@ -1,0 +1,94 @@
+# Environment variables (CRITICAL - DO NOT COMMIT)
+nul
+.env
+
+# Claude Code local settings
+.claude/
+.env.local
+.env.production
+
+# User data and database (contains personal info)
+users/
+*.db
+SantaDB.db
+
+# SSL Certificates & Private Keys (CRITICAL - DO NOT COMMIT)
+static/sec/*.pem
+static/sec/*.key
+*.pem
+*.key
+
+# Logs and generated files
+logs/
+*.log
+parsed/
+
+# Internal repository
+SantaClausisCalling.git/
+
+# Internal config files (not needed in public repo)
+langs.txt
+langs-rank.txt
+Santas.txt
+user-sandbox.txt
+HablaConSanta.txt
+testing-Santa.txt
+g_credentials.json
+*credentials*.json
+
+# SO / Synology / Windows
+Thumbs.db
+**/@eaDir/**
+*.zip
+.DS_Store
+desktop.ini
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+*Copy.py
+
+# Benchmarks (already removed)
+benchmarks/

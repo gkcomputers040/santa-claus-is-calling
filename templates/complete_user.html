@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ tittle_register }}</title>
+    <link rel="stylesheet" href="/static/css/styles_modal.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/css/snow.css">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="container" id="container-register">
+        <div class="form-container">
+            <form id="formulario2" action="/process-register" method="post">
+                <input type="hidden" name="token" value="{{ token }}">
+            <div class="campo-formulario" id="campo1">
+                    <div class="input-button-container">            
+                        <div class="input-container">
+                            <input type="password" id="password" name="password" required placeholder="{{ password_placeholder }}" class="input-formulario">
+                        </div>
+                        <div class="input-container">
+                            <input type="password" id="confirm_password" name="confirm_password" required placeholder="{{ confirm_password_placeholder }}" class="input-formulario" >
+                        </div>
+                        <div class="next-back">
+                            <button type="button" class="boton-siguiente" onclick="showNextField(1, 'formulario2')">{{ btn_next }}</button>
+                        </div>
+                    </div>
+                    <span class="mensaje-error" id="error-password"></span>
+                    <span class="mensaje-error" id="error-confirm_password"></span>
+            </div>
+            </form>
+            <div id="modalAyuda" class="modal-oculto">
+                <div class="modal-contenido">
+                    <span class="cerrar-modal" onclick="toggleModal()">&times;</span>
+                    <p class="texto-ayuda">{{ modal_help_text2|safe }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'footer.html' %}       
+</body>
+<script src="/static/js/showFields.js"></script>
+<script src="/static/js/popup.js"></script>
+<script src="/static/js/validator.js"></script>    
+<script src="/static/js/trimInputs.js"></script>
+<script>
+    var errorMessages = {
+        invalid_name_error: "{{ strings_data['invalid_name_error'] }}",
+        invalid_phone_message: "{{ strings_data['invalid_phone_message'] }}",
+        invalid_date_error: "{{ strings_data['invalid_date_error'] }}",
+        error_message_empty_field: "{{ strings_data['error_message_empty_field'] }}",
+        error_message_invalid_dropdown: "{{ strings_data['error_message_invalid_dropdown'] }}",
+        invalid_password_error: "{{ strings_data['invalid_password_error'] }}",
+        password_mismatch_error: "{{ strings_data['password_mismatch_error'] }}",
+        error_message_invalid_email: "{{ strings_data['error_message_invalid_email'] }}"
+        };
+</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</html>

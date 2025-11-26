@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="{{ language_attribute }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title_verification }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+   <style>
+     body, html {
+        height: 100vh;
+		    background-color: white;
+     }
+   </style>
+ </head>
+<body>
+   {% include 'navbar.html' %}
+    <div class="container" id="container-confirm">
+            <h1>{{ verification_success_message|safe }}</h1>
+            <div class="qr-code">
+                <p>{{ add_contact_info|safe }}</p>
+            <div class="return-to-home">
+              <a href="/" class="btn">{{ button_back_to_home }}</a>
+              <a href="/user" class="btn">{{ go_login }}</a>
+            </div>
+                <img src="{{ url_for('static', filename='img/confirmed.jpg') }}" alt="{{ alt_qr_code_description }}" style="width: 100%; height: auto; object-fit: contain; object-position: center;">
+            </div>
+     </div>
+    {% include 'footer.html' %}
+ </body>
+</html>

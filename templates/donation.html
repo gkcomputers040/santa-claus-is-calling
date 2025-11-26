@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+     <meta charset="UTF-8">
+    <title>{{ donation_declaration_title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <header>
+         <h1 style="margin-top: 20px;">{{ header_donations }}</h1>
+     </header>
+    <div class="container">
+         <h2>{{ header_our_commitment }}</h2>
+         <p>
+             {{ acertingArtCommitment }}
+         </p>
+         <h3>{{ how_it_works_title }}</h3>
+        <p>
+
+             {{ donation_message }}
+         </p>
+         <h3>{{ header_transparency_tracking }}</h3>
+         <p>
+            {{ commitment_to_transparency }}
+         </p>
+     </div>
+     <!-- Include Footer -->
+    {% include 'footer.html' %}
+</body>
+</html>

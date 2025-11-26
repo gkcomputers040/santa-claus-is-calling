@@ -1,0 +1,44 @@
+body {
+    background-color: #f5f5f5;
+    /*font-family: 'Courier New', Courier, monospace;*/
+    align-items: center;
+    background-image: url('/static/img/santa_claus.jpg');
+    background-color: white; /* Background color in case image doesn't cover everything */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+.pay-content {
+    max-width: 600px;
+    margin: 80px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Lighter background color */
+    border: 2px solid #00ff00;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+h1 {
+    color: #ff0000;
+    text-align: center;
+    text-decoration: underline;
+}
+p {
+    color: #333333;
+    line-height: 1.6;
+}
+.payment{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 80px;
+}
+#paypal-button-container{
+    margin-top: 5%;
+    width: 100%;
+    max-width: 600px;
+}
+#payment{
+    padding-top: 0;
+}
