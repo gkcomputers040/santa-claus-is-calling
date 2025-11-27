@@ -1,6 +1,10 @@
 # 🎅 Santa Claus is Calling - Real AI Phone Calls from Santa
 
 <div align="center">
+  <img src="static/img/santa_claus____.jpg" alt="Santa Claus is Calling" width="600">
+</div>
+
+<div align="center">
   <img src="https://img.shields.io/badge/Status-Working-green" alt="Status">
   <img src="https://img.shields.io/badge/Python-3.8+-blue" alt="Python">
   <img src="https://img.shields.io/badge/License-MIT-yellow" alt="License">
@@ -61,6 +65,23 @@ The result? A system resistant to prompt injection (using hypnosis-like session 
 - **Multi-Service Orchestration**: Seamlessly connects Twilio, OpenAI/Claude, Deepgram, and ElevenLabs
 - **Prompt Injection Resistant**: Unique protection mechanisms developed before they were common
 - **Scalable Architecture**: Separation between web app and call processing system
+
+## 📸 Screenshots
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="static/img/Screenshot-01.jpg" alt="Login & Landing Page" width="400"><br>
+        <sub><b>Login & Landing Page</b></sub>
+      </td>
+      <td align="center">
+        <img src="static/img/Screenshot-03.jpg" alt="Child Profile Configuration" width="400"><br>
+        <sub><b>Child Profile Configuration</b></sub>
+      </td>
+    </tr>
+  </table>
+</div>
 
 ## 🚀 Quick Start
 
@@ -224,6 +245,9 @@ The code may not be perfect (you'll find some Spanish comments I might have miss
 ---
 
 <div align="center">
+  <img src="static/img/santa_chibi.png" alt="Santa" width="80">
+  <img src="static/img/Reno_chibi.png" alt="Rudolph" width="80">
+  <img src="static/img/regalo_chibi.png" alt="Gift" width="80">
   <p>🎅 Ho Ho Ho! Happy Coding! 🎄</p>
   <p><sub>Created with ❤️ and lots of testing by someone who believes in Christmas magic and open source</sub></p>
 </div>
